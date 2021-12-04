@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+  <name>Static Market Price</name>
+  <author>Dazz Aephiex</author>
+  <supportedVersions>
+    <li>1.0</li>
+  </supportedVersions>
+  <description>This mod made it so that purchase and sell price will be static and always equal to the market value stat of the item to be traded.
+- Market price loss due to difficulty is ignored.
+- Market price modifiers due to social skill levels and certain pawn traits are ignored.
+- Item specific sell price multipliers are ignored.
+- The hard-coded 50% sell price factor and 150% purchase price factor are removed.
+
+You will still have to pay double the price for certain goods from certain orbital traders.
+
+Incompatibility: None
+Old Save Compatible: Yes
+Safely Removable: Yes
+</description>
+</ModMetaData>
