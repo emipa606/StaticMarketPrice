@@ -8,6 +8,11 @@ public static class StaticMarketPrice_GetPriceTooltip
 {
     public static bool Prefix(ref string __result, ref Tradeable __instance, TradeAction action)
     {
+        if (__instance.IsCurrency || __instance.IsFavor)
+        {
+            return true;
+        }
+
         __result = StatDefOf.MarketValue.LabelCap + ": " + __instance.BaseMarketValue;
         return false;
     }

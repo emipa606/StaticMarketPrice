@@ -8,7 +8,7 @@ public static class StaticMarketPrice_GetPriceFor
 {
     public static bool Prefix(ref float __result, ref Tradeable __instance, TradeAction action)
     {
-        if (__instance.IsCurrency)
+        if (__instance.IsCurrency || __instance.IsFavor)
         {
             return true;
         }
