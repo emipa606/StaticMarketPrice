@@ -10,10 +10,9 @@ public static class Initialization
 {
     static Initialization()
     {
-        var harmony = new Harmony("Harmony_StaticMarketPrice");
         try
         {
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
+            new Harmony("Harmony_StaticMarketPrice").PatchAll(Assembly.GetExecutingAssembly());
         }
         catch (Exception e)
         {

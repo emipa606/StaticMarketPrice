@@ -2,7 +2,7 @@
 <ModSyncNinjaData>
   <ID>513a47eb-6ebd-40c3-a0cf-8bc52ad6ecc9</ID>
   <ModName>Static Market Price (Continued)</ModName>
-  <Version>1.4.2</Version>
+  <Version>1.5.0</Version>
   <SaveBreaking>False</SaveBreaking>
   <Host name="Github">
     <Owner>emipa606</Owner>

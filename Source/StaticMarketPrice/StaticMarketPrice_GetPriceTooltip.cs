@@ -6,7 +6,7 @@ namespace StaticMarketPrice.HarmonyPatches;
 [HarmonyPatch(typeof(Tradeable), "GetPriceTooltip")]
 public static class StaticMarketPrice_GetPriceTooltip
 {
-    public static bool Prefix(ref string __result, ref Tradeable __instance, TradeAction action)
+    public static bool Prefix(ref string __result, ref Tradeable __instance)
     {
         if (__instance.IsCurrency || __instance.IsFavor)
         {
