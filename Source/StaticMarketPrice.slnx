@@ -1,0 +1,6 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="StaticMarketPrice/StaticMarketPrice.csproj" />
+</Solution>

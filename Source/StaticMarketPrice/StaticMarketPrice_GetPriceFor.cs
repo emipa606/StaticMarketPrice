@@ -3,7 +3,7 @@ using RimWorld;
 
 namespace StaticMarketPrice.HarmonyPatches;
 
-[HarmonyPatch(typeof(Tradeable), "GetPriceFor")]
+[HarmonyPatch(typeof(Tradeable), nameof(Tradeable.GetPriceFor))]
 public static class StaticMarketPrice_GetPriceFor
 {
     public static bool Prefix(ref float __result, ref Tradeable __instance, TradeAction action)
