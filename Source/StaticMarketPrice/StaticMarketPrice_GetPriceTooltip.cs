@@ -8,7 +8,7 @@ public static class StaticMarketPrice_GetPriceTooltip
 {
     public static bool Prefix(ref string __result, ref Tradeable __instance)
     {
-        if (__instance.IsCurrency || __instance.IsFavor)
+        if (__instance.IsCurrency || __instance.IsFavor || TradeSession.TradeCurrency != TradeCurrency.Silver)
         {
             return true;
         }
