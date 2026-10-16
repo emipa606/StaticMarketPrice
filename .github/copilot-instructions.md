@@ -1,41 +1,55 @@
-# Copilot Instructions for Static Market Price (Continued)
+# GitHub Copilot Instructions for RimWorld Mod: Static Market Price (Continued)
 
-## Mod Overview and Purpose
+## Overview and Purpose
 
-The "Static Market Price (Continued)" mod simplifies the trading system in RimWorld by making purchase and sell prices static and equal to the item's intrinsic market value. This modification aims to alleviate the frustration of fluctuating prices due to various in-game factors, providing a more straightforward and less variable trading experience while maintaining the challenge of existing trade systems without providing unrealistic complexities.
+The *Static Market Price (Continued)* mod for RimWorld aims to simplify trading mechanics by standardizing purchase and sale prices to match an item's market value. This modification removes various trading complexities and inequalities, providing a straightforward and predictable trading experience within the game. The mod eliminates the influence of certain game mechanics on pricing, allowing for more transparent and consistent transactions.
 
 ## Key Features and Systems
 
-- **Static Pricing Mechanism**: Ensures that the buy and sell prices of items always match their market value, negating any manipulation through difficulty settings or social skill variations.
-- **Elimination of Multipliers**: Removes specific trade multipliers such as the hard-coded 50% sell and 150% buy factors, standardizing the trading process.
-- **Selective Item Price Adjustments**: Preserves price doubling for certain commodities available through specific orbital traders.
-- **Compatibility and Flexibility**: The mod boasts compatibility with all save versions and can be removed without impacting game stability.
+- **Static Pricing**: The mod ensures that the buy and sell prices for items are equal to their market values, making the trading process simple and predictable.
+- **Ignored Modifiers**:
+  - Difficulty level-based market price loss.
+  - Social skill and pawn trait-based price modifiers.
+  - Specific sell price multipliers for items.
+- **Removed Factors**: The hard-coded 50% sell price factor and 150% purchase price factor are eliminated, ensuring parity with the item's market value.
+- **Orbital Trade Pricing**: Prices for certain goods from specific orbital traders remain at the original game's double pricing, maintaining some strategic elements of trade.
+
+### Compatibility
+
+- **No Conflicts**: The mod is designed to have no compatibility issues.
+- **Flexible Use**: Compatible with old saves and can be safely removed at any time.
 
 ## Coding Patterns and Conventions
 
-- **Naming Conventions**: Use PascalCase for class and method names. Keep the naming descriptive to enhance readability.
-- **Static Classes and Methods**: The mod employs static classes and methods to manage logic, indicative of functionality that doesn't rely on instance-specific data.
-- **Namespace Management**: Adhere to proper namespace definitions that correlate with the mod's folder structure to avoid conflicts and increase clarity.
+- **Naming**: Classes and methods use PascalCase, such as `StaticMarketPrice_GetPriceFor`.
+- **Structure**: The C# project is organized into separate functionality-specific files, e.g., `StaticMarketPrice_GetPriceFor.cs`, `Initialization.cs`, etc.
+- **Namespace**: Reflects the theme of the mod and is kept consistent across files.
 
 ## XML Integration
 
-- **XML Data Utilization**: For an efficient integration between C# code and XML data configurations, consider leveraging XML patch operations to modify base game data where necessary. This can include updating price definitions if dictated through XML.
+The mod contains minimal XML integration, focusing on core functionality changes through C#:
+
+- **About.xml**: This file includes metadata about the mod, such as the display name, author, package ID, and description.
   
+Ensure the XML file follows the correct format to enable seamless integration with the game.
+
 ## Harmony Patching
 
-- **Harmony Library Usage**: The core strategy for modifying base RimWorld operations without altering the original code involves using the Harmony library to patch methods:
-  - **Postfixes**: Add logic after original method execution to adjust market prices.
-  - **Prefixes**: Alter or substitute calculations to control price factors prior to their application.
-- **Non-Invasive Strategy**: Ensure patches do not disrupt game stability by avoiding destructive method overrides and validating all changes through extensive testing.
+The project utilizes Harmony, a popular library for modifying game functions non-invasively:
+
+- **Method Prefixes**: The mod uses Harmony prefixes to modify existing methods. This is showcased in the `StaticMarketPrice_GetPriceFor` and `StaticMarketPrice_GetPriceTooltip` classes where prefix methods are applied to alter trading logic.
+- **Initialization**: The `Initialization.cs` file ensures the Harmony patches are applied when the mod is activated.
+
+Ensure Harmony is a dependency in your project setup, as it executes the method modifications properly.
 
 ## Suggestions for Copilot
 
-- **Code Commenting**: Copilot can assist with generating thorough and helpful comments for each significant method and complex logic section. Encourage explanation of logic paths that influence external dependencies or integrations.
-- **Efficient Code Snippets**: Utilize Copilot to generate boilerplate for repetitive code structures, such as standard Harmony patch templates or XML handler operations.
-- **Error Handling**: Implement robust error handling using try-catch blocks with helpful logs and alerts to aid debugging and improve user experience.
-- **AI-Based Suggestions**: Leverage Copilot's contextual understanding to suggest improvements in logic simplification and operation efficiency, especially when optimizing the static pricing calculations.
-
-By maintaining clear documentation and adhering to these instructions, contributors can effectively engage with and further the development of the "Static Market Price (Continued)" mod, ensuring it remains robust, user-friendly, and in-line with RimWorld's evolving modding ecosystem.
+- Implement Helper Methods: Use Copilot to suggest helper methods for repetitive tasks such as fetching item prices or logging operations to maintain cleanliness within the code.
+- Consistent Documentation: Create comprehensive summaries and in-line comments in C# files to provide context and enhance readability.
+- XML File Manipulation: Use Copilot for generating and maintaining XML structures, especially if future expansions or additional metadata are needed.
+- Advanced Harmony Techniques: Leverage Copilot to explore more advanced Harmony patching techniques, like transpilers, if deeper modifications to the game mechanics are necessary in future updates.
+  
+Following these guidelines and utilizing GitHub Copilot's capabilities will streamline development and maintenance processes while ensuring the mod operates as intended.
 
 ## Project Solution Guidelines
 - Relevant mod XML files are included as Solution Items under the solution folder named XML, these can be read and modified from within the solution.
@@ -44,3 +58,11 @@ By maintaining clear documentation and adhering to these instructions, contribut
 - When making functional changes in this mod, ensure the documented features stay in sync with implementation; use the in-solution `.github` copy as the primary file.
 - In the solution is also a project called Assembly-CSharp, containing a read-only version of the decompiled game source, for reference and debugging purposes.
 - For any new documentation, update this copilot-instructions.md file rather than creating separate documentation files.
+
+
+## Hard rules (must follow)
+- Do NOT run commands that modify the repo (no git commit, git apply, dotnet format) unless explicitly asked.
+- Prefer minimal reads: read only the smallest code region needed (around the suspicious lines).
+- When mentioning SonarQube issues, automatically use the SonarQube MCP service to fetch and address issues instead of making inferred fixes without querying SonarQube first.
+- When mentioning the rimworld log, automatically use the Rimworld MCP service to fetch the log.
+
